@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>peg list</title>
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/main.css">
+        <link rel="icon" type="image/x-icon" href="../img/hash-tag.ico">
+        <script src="../js/lottie-player.js"></script>
+        <script src="../js/jQuery.js"></script>
+
+        <style>
+            .animation {
+              position: absolute ;
+              top: 0%;
+            }
+            .animation1{
+                left: 5%;
+            }
+            .animation2{
+                right: 5%;
+            }
+
+        </style>
+    </head>
+    <body>
+        <a href="home/all" class="pegListButton btn btn-success btn-lg">Peg LIst</a>
+        <div class="container">
+            <img id = "imageHolder" src="img/black.jpg" alt="" onmouseover="showGif(event)"/>
+            <h1 id="answer">0</h1>
+            <lottie-player src="animations/congrats1.json" class="animation animation1" mode="normal" style="width: 400px; height: 4  00px;"></lottie-player>
+            <lottie-player src="animations/congrats1.json" class="animation animation2" mode="normal" style="width: 400px; height: 4  00px;"></lottie-player>
+            <input form-controltype="text" id="gifInput">
+        </div>
+    </body>
+    <script>
+        const gifsNamesList = [
+            "Sauce", "Seed", "Sun", "Sumo", "Sir", "Soul", "Sushi", "Ski", "Sofa", "Soap", "Dice",
+            "Dad", "DNA", "Black Adam", "Thor", "Adele", "DJ", "Dog", "Tv", "Tuba", "Nose",
+            "Net", "Nun", "Nemo","Nero", "Nail", "Nacho", "Ink", "Knife", "NBA", "Mouse",
+            "Mat", "Moon", "Mummy", "Mario", "Mole", "Match", "Mickey", "Mafia", "Map", "Rose",
+            "Radio", "Rain", "Water", "Error", "Ariel", "Arch", "Rocky", "Roof", "Harp", "Lasso"
+        ]
+        let numberOfChanges = 0
+        const animation1 = document.getElementsByClassName("animation1")[0];
+        const animation2 = document.getElementsByClassName("animation2")[0];
+        
+        let imageHolder = $("#imageHolder")
+        let gifInput = $("#gifInput")
+        
+        let answer = $("#answer")
+        gifInput.on('keyup', function (e) {
+            if (e.key === 'Enter' || e.keyCode === 13) {
+
+                imageHolder.attr('src',"img/black.jpg")
+
+                if(numberOfChanges % 5 == 0 && numberOfChanges != 0){
+                    animation1.style.visibility = 'visible'
+                    animation1.seek("0%")
+                    animation1.play();
+                    animation1.addEventListener("complete", (e) => {
+                        animation1.style.visibility = 'hidden';
+                    });
+                    
+                    animation2.style.visibility = 'visible'
+                    animation2.seek("0%")
+                    animation2.play();
+                    animation2.addEventListener("complete", (e) => {
+                        animation2.style.visibility = 'hidden'; 
+                    });
+                }
+
+                if(gifInput.val() == gifsNamesList[parseInt(answer.text())]){
+                    let x = Math.floor((Math.random() * 31))
+                    console.log(gifInput.val(), gifsNamesList[parseInt(imageHolder.attr('alt'))], parseInt(imageHolder.attr('alt')))
+
+                    answer.text(x)
+                    numberOfChanges++
+
+                    gifInput.val('')
+                }
+                else{
+                    numberOfChanges--;
+                    gifInput.val('')
+                }
+                
+            }
+        });
+        
+        const showGif = (event) => {
+            let id = answer.text()
+            console.log(id)
+            imageHolder.attr('src',"gif/"+id)
+            imageHolder.attr('alt', id)
+        }
+        
+    </script>
+</html>

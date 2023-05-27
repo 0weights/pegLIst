@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "start": "nodemon server.js",
+    "build": "npm install && npm run build",
+    "dev": "nodemon server"
+  },
+  "dependencies": {
+    "bootstrap": "^3.4.1",
+    "express": "^4.18.2",
+    "jquery": "^3.7.0",
+    "nodemon": "^2.0.22"
+  }
+}

@@ -1,0 +1,53 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/all.css">
+    <link rel="icon" type="image/x-icon" href="../img/hash-tag.ico">
+    <script src="../js/jQuery.js"></script>
+    <title>Peg List</title>
+</head>
+<body>
+    <a href="../home" class="trainButton btn btn-success btn-lg">Train</a>
+</body>
+<script>
+    
+    // imageContainer.prepend('<img id="theImg" src="../gif/1" />')
+    // imageContainer.prepend('<h1>0</h1/')
+
+    function createGrid() {
+        var ratioW = Math.floor($(document).width()/10),
+            ratioH = Math.floor($(document).height()/10);
+        
+        var allContainer = jQuery('<div />', {
+            class: 'grid', 
+            width: ratioW  * 10, 
+            height: ratioH  * 10
+        }).addClass('allContainer').appendTo('body');
+
+        let gifId = 0
+        for (var i = 0; i < 10; i++) {
+            for(var p = 0; p < 10; p++){
+                let imageContainer = jQuery('<div />', {
+                    width: ratioW, 
+                    height: ratioW
+                }).addClass('imageContainer').appendTo(allContainer);
+
+                let image = jQuery('<img>', {
+                    width: ratioW, 
+                    height: ratioW,
+                    src : "../gif/"+gifId
+                }).addClass('ff').appendTo(imageContainer);
+
+                let gifIdText = jQuery('<h1 />', {
+                    
+                }).append(gifId).appendTo(imageContainer);
+
+                gifId++
+            }
+        }
+    }
+    createGrid();
+
+</script>
+</html>

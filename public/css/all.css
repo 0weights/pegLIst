@@ -1,0 +1,26 @@
+body {
+    padding: 0;
+}
+
+.trainButton{
+    position: fixed;
+    bottom: 3%;
+    right: 2%;
+    size: 15rem;
+    z-index: 33;
+}
+
+.imageContainer {
+    position: relative;
+    float: left;
+}
+
+h1{
+    position: absolute;
+    margin:0;
+    top: 57%;
+    left: 50%;
+    transform: translate(-50%, -62%);
+    color: lightgreen;
+    font-size: 5rem;
+}
