@@ -13,5 +13,10 @@ app.use('/', require('./routes/homeRout'))
 app.use('/home', require('./routes/homeRout'))
 app.use('/gif', require('./routes/gifRoute'))
 // up and running
-app.listen(5500)
-// sdkfjsd
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, './views/index.html'));
+  });
+// up and running
+app.listen(5000, () => {
+    console.log('serve at http://localhost:5000');
+});
